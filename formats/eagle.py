@@ -150,7 +150,7 @@ class EaglePCB(mathFunctions):
             else:
                 [x3, y3] = self.arcMidPoint([i['x1'], i['y1']], [i['x2'], i['y2']], i['curve'])
                 arc = Part.Arc(FreeCAD.Vector(i['x2'], i['y2'], 0.0), FreeCAD.Vector(x3, y3, 0.0), FreeCAD.Vector(i['x1'], i['y1'], 0.0))
-                borderObject.addGeometry(self.Draft2Sketch(arc, borderObject))
+                borderObject.addGeometry(arc)
         ######
         for i in self.getCircles(dane, 20):
             borderObject.addGeometry(Part.Circle(FreeCAD.Vector(i['x'], i['y']), FreeCAD.Vector(0, 0, 1), i['r']))
