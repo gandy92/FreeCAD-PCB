@@ -36,7 +36,8 @@ __requiredFreeCADVersion__ = (0.18, 0.18)  # (min, max)
 
 def currentFreeCADVersion():
     data = FreeCAD.Version()
-    return float(data[0] + '.' + data[1])
+    print("currentFreeCADVersion():", data)
+    return float(data[0] + '.' + data[1].split('.')[0])
 
 
 def checkPythonVesion():
@@ -51,6 +52,7 @@ def checkCompatibility():
     currentFCVersion = currentFreeCADVersion()
     
     if currentFCVersion >= __requiredFreeCADVersion__[0] and currentFCVersion <= __requiredFreeCADVersion__[1]:
+        print("Python version:", sys.version_info)
         if float("{0}.{1}".format(sys.version_info[0], sys.version_info[1])) < __pythonVersion__:
             return [False, "Error. Minimum required Python version: {0}.".format(__pythonVersion__)]
         else:
